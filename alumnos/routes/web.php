@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AlumnosController@index')->name('home');
+
+Route::post('/agregar', 'AlumnosController@store')->name('store');

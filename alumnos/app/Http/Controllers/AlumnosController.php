@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\alumnos;
 use Illuminate\Http\Request;
+use App;
 
 class AlumnosController extends Controller
 {
@@ -14,7 +15,7 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -35,7 +36,13 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $alumnoAgregar = new alumnos;
+        $alumnoAgregar->nombre = $request->nombre;
+        $alumnoAgregar->correo = $request->correo;
+        $alumnoAgregar->created_at = $request->created_at;
+        $alumnoAgregar->save();
+        return back()->with('agregar', 'El alumno fue agregado correctamente');
+
     }
 
     /**
