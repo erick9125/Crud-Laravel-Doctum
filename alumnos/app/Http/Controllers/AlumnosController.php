@@ -15,7 +15,8 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $alumno = App\alumnos::all();
+        return view('home', compact('alumno'));
     }
 
     /**

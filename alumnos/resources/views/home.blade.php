@@ -24,7 +24,25 @@
             @endif
         </div>
         <div class="col-md-7">
-
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Fecha Nacimiento</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($alumno as $item)
+                        <tr>
+                            <th>{{$item->nombre}}</th>
+                            <th>{{$item->correo}}</th>
+                            <th>{{$item->created_at}}</th>
+                            
+                        </tr>
+                    @endforeach
+                </tbody>
         </div>
     </div>
 @endsection
