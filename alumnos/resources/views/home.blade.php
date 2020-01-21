@@ -39,6 +39,9 @@
                             <th>{{$item->nombre}}</th>
                             <th>{{$item->correo}}</th>
                             <th>{{$item->created_at}}</th>
+                            <th>
+                            <a href="{{route('editar', $item->id)}}" class="btn btn-warning">Editar</a>
+                            </th>
                             
                         </tr>
                     @endforeach

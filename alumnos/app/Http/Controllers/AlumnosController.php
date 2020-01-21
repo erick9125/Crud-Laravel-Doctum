@@ -63,9 +63,10 @@ class AlumnosController extends Controller
      * @param  \App\alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function edit(alumnos $alumnos)
+    public function edit($id)
     {
-        //
+        $alumnoActualizar = App\alumnos::findOrFail($id);
+        return view('editar', compact('alumnoActualizar'));
     }
 
     /**
@@ -75,9 +76,16 @@ class AlumnosController extends Controller
      * @param  \App\alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, alumnos $alumnos)
+    public function update(Request $request, $id)
     {
-        //
+        $alumnoUpdate = App\alumnos::findOrFail($id);
+        $alumnoUpdate->nombre = $request->nombre;
+        $alumnoUpdate->correo = $request->correo;
+        $alumnoUpdate->created_at = $request->created_at;
+        $alumnoUpdate->save();
+        return back()->with('update', 'El alumno fue actualizado correctamente');
+
+
     }
 
     /**
