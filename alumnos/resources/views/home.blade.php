@@ -62,11 +62,23 @@
                             <th>{{$item->created_at}}</th>
                             <th>
                             <a href="{{route('editar', $item->id)}}" class="btn btn-warning">Editar</a>
+                            <form action="{{route('eliminar', $item->id)}}" method="POST" class="d-inline">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
                             </th>
                             
                         </tr>
                     @endforeach
                 </tbody>
+            </table>
+            @if (session('eliminar'))
+                <div class="alert alert-success mt-3">
+                    {{session('eliminar')}}
+                </div>
+            @endif
+            {{$alumno->links()}}
         </div>
     </div>
 @endsection

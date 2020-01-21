@@ -15,7 +15,7 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        $alumno = App\alumnos::all();
+        $alumno = App\alumnos::paginate(5);
         return view('home', compact('alumno'));
     }
 
@@ -99,8 +99,10 @@ class AlumnosController extends Controller
      * @param  \App\alumnos  $alumnos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(alumnos $alumnos)
+    public function destroy( $id)
     {
-        //
+        $alumnoEliminar = App\alumnos::findOrFail($id);
+        $alumnoEliminar->delete();
+        return back()->with('eliminar', 'El alumno fue eliminado correctamente');
     }
 }

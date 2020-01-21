@@ -18,3 +18,5 @@ Route::post('/agregar', 'AlumnosController@store')->name('store');
 Route::get('/editar/{id}' , 'AlumnosController@edit')->name('editar');
 
 Route::put('/update/{id}' , 'AlumnosController@update')->name('update');
+
+Route::delete('/eliminar/{id}', 'AlumnosController@destroy')->name('eliminar');
