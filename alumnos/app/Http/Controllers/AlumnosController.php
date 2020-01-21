@@ -15,7 +15,8 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        $alumno = App\alumnos::paginate(5);
+       //$alumno = App\alumnos::paginate(5);
+        $alumno = App\alumnos::orderBy('nombre','asc')->get();
         return view('home', compact('alumno'));
     }
 

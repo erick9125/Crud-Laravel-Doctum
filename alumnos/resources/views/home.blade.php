@@ -78,7 +78,7 @@
                     {{session('eliminar')}}
                 </div>
             @endif
-            {{$alumno->links()}}
+           
         </div>
     </div>
 @endsection
