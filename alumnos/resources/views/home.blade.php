@@ -7,14 +7,35 @@
         <form action="{{route('store')}}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingresa el nombre">
+                <input type="text" name="nombre" id="nombre" class="form-control" value="{{old('nombre')}}" minlength="3" placeholder="Ingresa el nombre">
                 </div>
+
+                @error('nombre')
+                    <div class="alert alert-danger">
+                        El nombre es requerido
+                    </div>
+                @enderror
+
                 <div class="form-group">
-                    <input type="email" name="correo" id="correo" class="form-control" placeholder="correo@dominio.cl">
+                    <input type="email" name="correo" id="correo" class="form-control" value="{{old('correo')}}" placeholder="correo@dominio.cl">
                 </div>
+
+                @error('correo')
+                    <div class="alert alert-danger">
+                        El correo es requerido
+                    </div>
+                @enderror
+
                 <div class="form-group">
-                    <input type="date" name="created_at" id="created_at" class="form-control">
+                    <input type="date" name="created_at" id="created_at" value="{{old('created_at')}}" class="form-control">
                 </div>
+
+                @error('created_at')
+                    <div class="alert alert-danger">
+                        La fecha es requerido
+                    </div>
+                @enderror
+
                 <button type="submit" class="btn btn-success btn-block">Guardar Alumno</button>
             </form>
             @if (session('agregar'))

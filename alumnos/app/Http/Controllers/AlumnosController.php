@@ -38,6 +38,11 @@ class AlumnosController extends Controller
     public function store(Request $request)
     {
         $alumnoAgregar = new alumnos;
+        $request->validate([
+            'nombre' => 'required',
+            'correo' => 'required',
+            'created_at' => 'required'
+        ]);
         $alumnoAgregar->nombre = $request->nombre;
         $alumnoAgregar->correo = $request->correo;
         $alumnoAgregar->created_at = $request->created_at;
